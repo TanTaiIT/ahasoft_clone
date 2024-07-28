@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": [
+        "src/*",
+      ],
+      "API/*": ["src/api/*"],
+      "SERVICE/*": ["src/service/*"],
+      "CONSTANT/*": ["src/constant/*"],
+      "LAYOUT/*": ["src/layouts/*"],
+      "STORE/*" : ["src/store/*"],
+      "COMPONENT/*": ["src/components/*"] 
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+}
