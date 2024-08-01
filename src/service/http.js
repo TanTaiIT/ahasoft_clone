@@ -10,8 +10,9 @@ const CREATE_HTTP_DATA = {
   type: 'aggr',
 }
 const createHttp = ({type='', version=1, options={}}) => {
+
   const http = axios.create({
-    baseURL: `${process.env.BASE_URL}/api/${type}/v${version}`,
+    baseURL: `https://ahasoft-salon-admin-http-aggregator-dev.azurewebsites.net/api/${type}/v${version}`,
     headers: DEFAULT_HEADERS,
     ...(options?.responseType && {responseType: options.responseType})
   })

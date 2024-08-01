@@ -1,12 +1,15 @@
 <script>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 export default {
   setup() {
     const loginForm = ref({
       id: '',
       password: ''
     })
+    const router = useRouter()
+    console.log('router', router)
 
     const store = useStore()
 
@@ -18,19 +21,21 @@ export default {
         country: 'VN'
       }
 
-      console.log('store', store)
-      const response = await store.dispatch('loginSubcribe', payload)  
-      console.log('reponse', response)
+      const response = await store.dispatch('authentication/loginSubcribe', payload)
+      if(response?.data?.isOK) {
+        router.push({name: 'Home'})
+      }
       } catch (error) {
         throw new Error(error)
       }
-      
-      
     }
+
+    const dialog = ref(false)
 
     return {
       loginForm,
-      onLogin
+      onLogin,
+      dialog
     }
   }
 }
@@ -54,6 +59,7 @@ export default {
       </div>
     </div>
   </form>
+  
 </template>
 
 <style lang="scss" scoped>

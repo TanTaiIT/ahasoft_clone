@@ -1,10 +1,14 @@
 <template>
   <div class="app">
+    <loading-component/>
     <router-view />
   </div>
   
 </template>
 
+<script setup>
+import LoadingComponent from './components/common/loading/loading-component.vue'
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

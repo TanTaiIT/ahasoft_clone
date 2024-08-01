@@ -1,7 +1,8 @@
-import { createCmdHttp } from './../service/http'
+import { createAggrHttp, createCmdHttp } from './../service/http'
 
-const cmdHttp = createCmdHttp()
+// const cmdHttp = createCmdHttp()
+const aggrHttp = createAggrHttp()
 export const loginSubcribe = async(country, payload) => {
-  return await cmdHttp.post('/auth/login/Subscriber?' + country, payload)
+  return await aggrHttp.post('/auth/login/Subscriber?' + country, payload)
 }
 
