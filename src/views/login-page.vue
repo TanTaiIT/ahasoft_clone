@@ -2,19 +2,22 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import useShowLoading from './../composable/useCommon.js'
 export default {
   setup() {
     const loginForm = ref({
       id: '',
       password: ''
     })
+    const { setLoading } = useShowLoading()
     const router = useRouter()
-    console.log('router', router)
 
     const store = useStore()
 
     const onLogin = async() => {
       try {
+        setLoading(true)
+        useShowLoading
         const payload = {
         user_id: loginForm.value.id,
         password: loginForm.value.password,
@@ -27,6 +30,8 @@ export default {
       }
       } catch (error) {
         throw new Error(error)
+      } finally {
+        setLoading(false)
       }
     }
 

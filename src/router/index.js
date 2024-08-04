@@ -1,11 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from './../views/HomeView.vue'
 import Login from './../views/login-page.vue'
+import AuthenticationContainer from './../layout/authentication-layout.vue'
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    component: AuthenticationContainer,
+    children: [
+      {
+        path: '/',
+        name: 'Home',
+        component: Home
+      }
+    ]
   },
 
   {

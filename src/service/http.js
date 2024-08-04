@@ -1,3 +1,6 @@
+// import store from './../store/index.js'
+// import store from './../store/index.js'
+import store from './../store/index'
 import axios from 'axios'
 
 const DEFAULT_HEADERS = {
@@ -9,6 +12,8 @@ const CREATE_HTTP_DATA = {
   version: 1,
   type: 'aggr',
 }
+// console.log('store', store)
+
 const createHttp = ({type='', version=1, options={}}) => {
 
   const http = axios.create({
@@ -16,6 +21,14 @@ const createHttp = ({type='', version=1, options={}}) => {
     headers: DEFAULT_HEADERS,
     ...(options?.responseType && {responseType: options.responseType})
   })
+
+  const setRequestHeaders = () => {
+    console.log('store', this.$store)
+
+    // const token = store
+    // console.log('storelelsls', token)
+  }
+  axios.interceptors.request.use(setRequestHeaders())
 
   return http
 }

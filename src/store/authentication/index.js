@@ -1,5 +1,5 @@
 import options from './../../constant/options'
-import { loginSubcribe } from './../../api/authentication-api'
+import { loginSubcribe, getBasicAccountInfo } from './../../api/authentication-api'
 
 //ViewModel
 import UserAccountViewModel from './../../view-model/authentication/user-account-view-model.js'
@@ -42,7 +42,11 @@ const state = {
   
 
 }
-const getters = {}
+const getters = {
+  getApiToken(state) {
+    return state.apiToken
+  }
+}
 const mutations = {
   setShopBasicInfo(state, shopInfo) {
     state.shopInfo = shopInfo
@@ -82,7 +86,6 @@ const actions = {
   },
 
   setRefreshTokenAndApiToken({commit}, userAccount) {
-    console.log('data', userAccount)
     commit('setApiToken', userAccount.userAccountViewModel.userAuthInfo.authToken)
     commit('setRefreshToken', userAccount.userAccountViewModel.userAuthInfo.refreshToken)
 
@@ -103,11 +106,20 @@ const actions = {
       solutionId: 3002
     }
     const culture = getCulture('VN')
-    console.log('culture', culture)
 
     const response = await loginSubcribe(culture, payload)
     dispatch('setLoginUser', response?.data?.result)
     return response
+  },
+
+  async getShopInfo({commit, dispath}, data) {
+    try {
+      const response = await getBasicAccountInfo()
+      console.log('response', response)
+      return response
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 }
 

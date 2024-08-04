@@ -1,12 +1,14 @@
 <template>
   <div class="app">
-    <loading-component/>
+    <loading-component :key="'app-spinner'"/>
     <router-view />
   </div>
   
 </template>
 
 <script setup>
+import { computed } from 'vue';
+import { useStore } from 'vuex'
 import LoadingComponent from './components/common/loading/loading-component.vue'
 </script>
 <style lang="scss">

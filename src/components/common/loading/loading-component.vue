@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-landing" :class="visibleLoadingClass">
+  <div class="loading-landing" :class="visibleLoadingClass" v-if="isLoading">
     <div class="text-center loading">
       <v-progress-circular
       :size="50"
@@ -12,15 +12,12 @@
 
 <script setup>
 import { useStore } from 'vuex'
-import { ref } from 'vue'
-const isShowLoading = ref(false)
+import { computed, ref } from 'vue'
 const store = useStore()
-
-console.log('userstore', store)
-const isLoading = store.state.authentication.isLoading
-console.log('isloading', isLoading)
-
-const storeLoading = store
+const isLoading = computed(() => {
+  return store.state.authentication.isLoading
+})
+// const isLoading = store.state.authentication.isLoading
 </script>
 <style lang="scss" scoped>
 .loading-landing {

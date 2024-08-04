@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "esnext",
     "baseUrl": "./",
     "moduleResolution": "node",
@@ -11,9 +11,9 @@
       "API/*": ["src/api/*"],
       "SERVICE/*": ["src/service/*"],
       "CONSTANT/*": ["src/constant/*"],
-      "LAYOUT/*": ["src/layouts/*"],
+      "LAYOUT/*": ["src/layout/*"],
       "STORE/*" : ["src/store/*"],
-      "COMPONENT/*": ["src/components/*"] 
+      "COMPONENT/*": ["src/components/*"]
     },
     "lib": [
       "esnext",
